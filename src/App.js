@@ -1,8 +1,13 @@
 import React from 'react';
 import GlobalStyle from './styles/global';
-
+import Header from './components/Header/index';
 function App() {
-  return <GlobalStyle />;
+  return (
+    <>
+      <Header />
+      <GlobalStyle />
+    </>
+  );
 }
 
 export default App;
