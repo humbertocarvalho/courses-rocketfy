@@ -39,7 +39,9 @@ export default function Card({ data, index }) {
         return;
       }
 
-      move(draggedIndex, targetIndex);
+      move(draggedIndex, targetIndex){
+        
+      };
     }
   });
 
