@@ -1,6 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import { useDrag, useDrop } from 'react-dnd';
 import BoardContext from '../Board/context';
+import produce from 'immer'
 
 import { Container, Label } from './styles';
 
@@ -18,8 +19,11 @@ export default function Card({ data, index }) {
   const [, dropRef] = useDrop({
     accept: 'CARD',
     hover(item, monitor) {
+      
+      const draggedListIndex = item.listIndex;
       const draggedIndex = item.index;
       const targetIndex = index;
+      
 
       if (draggedIndex === targetIndex) {
         return;
@@ -39,8 +43,10 @@ export default function Card({ data, index }) {
         return;
       }
 
-      move(draggedIndex, targetIndex){
-        
+      move(draggedItemList,draggedIndex, targetIndex){
+        setLists(produce(lists,draft=>{
+          const dragged = draft[]
+        }))
       };
     }
   });
@@ -50,8 +56,8 @@ export default function Card({ data, index }) {
   return (
     <Container ref={ref} isDragging={isDragging}>
       <header>
-        {data.labels.map(label => (
-          <Label key={label} color={label} />
+        {data.labels.map((label,index) => (
+          <Label key={label} index={index} color={label} />
         ))}
       </header>
       <p>{data.content}</p>

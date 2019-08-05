@@ -9,7 +9,7 @@ const data = loadLists();
 export default function Board() {
   const [lists, setLists] = useState(data);
 
-  function move(from, to) {
+  function move(fromList, from, to) {
     console.log(from, to);
   }
   return (
